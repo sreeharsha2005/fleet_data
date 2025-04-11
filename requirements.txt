@@ -1,0 +1,8 @@
+#packages
+faker
+faker_vehicle
+# librdkafka
+# librdkafka-dev
+quixstreams
+confluent_kafka
+uuid

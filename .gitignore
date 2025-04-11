@@ -1,0 +1,15 @@
+# VS Code
+.vscode/
+
+# environment
+env/
+venv/
+.venv/
+
+# build results
+/build/
+dist/
+*egg-info
+**/__pycache__/**
+
+*.pyc

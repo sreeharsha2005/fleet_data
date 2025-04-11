@@ -1,0 +1,64 @@
+[
+    {
+        "driver_id": "c8c9a380fe864f9cbffd85dbf25ec97a",
+        "user_id": "960c431d69ca4ea49e969289f926bfa8",
+        "linked_vin": [
+            "UPMEETUT8USYXA4W9"
+        ],
+        "seat_preference": {
+            "horizontal_setting": 58,
+            "height_setting": 95,
+            "inclination_setting": 113,
+            "lumbar_setting": 7
+        },
+        "steering_preference": {
+            "vertical_setting": 18,
+            "telescopic_setting": 30
+        },
+        "mirror_preference": {
+            "left": {
+                "horizontal": 59,
+                "vertical": 26
+            },
+            "right": {
+                "horizontal": 20,
+                "vertical": 49
+            },
+            "rear_view": {
+                "horizontal": 45,
+                "vertical": 33
+            }
+        }
+    },
+    {
+        "driver_id": "7f9b328b83204e608cd18e7257ad3131",
+        "user_id": "2368bb8a67b04b03a2eacd08799a1a2a",
+        "linked_vin": [
+            "HFSNP1AT329L4DPLF"
+        ],
+        "seat_preference": {
+            "horizontal_setting": 97,
+            "height_setting": 83,
+            "inclination_setting": 104,
+            "lumbar_setting": 43
+        },
+        "steering_preference": {
+            "vertical_setting": 74,
+            "telescopic_setting": 75
+        },
+        "mirror_preference": {
+            "left": {
+                "horizontal": 8,
+                "vertical": 49
+            },
+            "right": {
+                "horizontal": 48,
+                "vertical": 95
+            },
+            "rear_view": {
+                "horizontal": 20,
+                "vertical": 3
+            }
+        }
+    }
+]
