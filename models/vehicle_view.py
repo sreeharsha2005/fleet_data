@@ -19,7 +19,7 @@ class Vehicle:
 class VehicleOperatingData:
 
     vin = ""
-    timestamp = ""
+    timestamp = 0
     tire_pressure = {}
     collision_alerts = {}
 
