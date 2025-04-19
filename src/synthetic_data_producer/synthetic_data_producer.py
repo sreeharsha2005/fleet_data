@@ -1,4 +1,4 @@
-from utils.constants import (
+from src.utils.constants import (
     KAFKA_TOPIC_VEHICLE_INVENTORY_DATA,
     KAFKA_TOPIC_USER_DATA,
     KAFKA_TOPIC_DRIVER_PROFILE_DATA,
@@ -7,7 +7,7 @@ from utils.constants import (
     DRIVER_PROFILE_FILENAME,
     USER_DATA_FILENAME,
 )
-from generate_fake_inventory import (
+from src.utils.generate_fake_inventory import (
     generate_fake_vehicle_inventory,
     generate_fake_driver_profile,
     generate_fake_user_data,
@@ -24,7 +24,6 @@ from pathlib import Path
 from pprint import pprint
 from threading import Thread
 
-import os
 import time
 
 
@@ -44,7 +43,7 @@ def get_fleet_vehicle_list(arg_dict) -> list:
 
     fleet_vehicle_list = []
 
-    if fleet_datafile_exists and (arg_dict.create_new in ['n', 'N']):
+    if fleet_datafile_exists and (arg_dict.create_new in ["n", "N"]):
         with open(fleet_file_path, "r") as fleet_file:
             fleet_vehicle_list = json.load(fleet_file)
             logging.info(
@@ -54,7 +53,7 @@ def get_fleet_vehicle_list(arg_dict) -> list:
             )
     else:
         fleet_vehicle_list = generate_fake_vehicle_inventory(arg_dict.number)
-        if arg_dict.create_new in ['y', 'Y']:
+        if arg_dict.create_new in ["y", "Y"]:
             logging.info("Overwriting file with new data")
 
         with open(fleet_file_path, "w") as fleet_file:
@@ -241,12 +240,22 @@ def main():
     logging.info("START")
 
     # Parse the input arguments
-    arg_parser = argparse.ArgumentParser(description="Vehicle synthetic data generator program")
-    arg_parser.add_argument("-n", "--number", type=int, default=2, help="Number of vehicles required")
-    arg_parser.add_argument("-c", "--create-new", choices=["y", "Y", "n", "N"], default='n', help="Create new vehicle data")
+    arg_parser = argparse.ArgumentParser(
+        description="Vehicle synthetic data generator program"
+    )
+    arg_parser.add_argument(
+        "-n", "--number", type=int, default=2, help="Number of vehicles required"
+    )
+    arg_parser.add_argument(
+        "-c",
+        "--create-new",
+        choices=["y", "Y", "n", "N"],
+        default="n",
+        help="Create new vehicle data",
+    )
 
     args = arg_parser.parse_args()
-    #print(args)
+    # print(args)
 
     # Fleet Inventory, User and Driver profile creation
     fleet_vehicle_list = get_fleet_vehicle_list(args)

@@ -7,12 +7,17 @@ from uuid import uuid4
 from faker import Faker
 from faker_vehicle import VehicleProvider
 from faker.providers import automotive
-from utils.constants import VEHICLE_BRAND_RIVIAN
+from src.utils.constants import VEHICLE_BRAND_RIVIAN
 from random import choice, randint
-from models.vehicle_view import Vehicle, VehicleOperatingData, TpmsData, CollisionAlerts
+from src.models.vehicle_model import (
+    Vehicle,
+    VehicleOperatingData,
+    TpmsData,
+    CollisionAlerts,
+)
 
-from models.user_view import User
-from models.driver_profile_view import (
+from src.models.user_model import User
+from src.models.driver_profile_model import (
     DriverProfile,
     MirrorPreference,
     SteeringPreference,

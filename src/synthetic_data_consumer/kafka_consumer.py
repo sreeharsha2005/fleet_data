@@ -14,7 +14,7 @@ from utils.constants import (
     KAFKA_TOPIC_VEHICLE_INVENTORY_DATA,
     KAFKA_TOPIC_DRIVER_PROFILE_DATA,
     KAFKA_TOPIC_USER_DATA,
-    FLEET_DATA_ENDPOINT,
+    FLEET_VEHICLE_DATA_ENDPOINT,
     FLEET_OPERATING_DATA_ENDPOINT,
 )
 
@@ -29,7 +29,7 @@ def call_vehicle_inventory_data_api(kafka_message):
     payload["vin"] = str(encoded_vin.decode("utf-8"))
 
     # Call fleet API
-    requests.post(FLEET_DATA_ENDPOINT, json=payload)
+    requests.post(FLEET_VEHICLE_DATA_ENDPOINT, json=payload)
 
 
 def call_vehicle_operational_data_api(kafka_message):
@@ -41,11 +41,11 @@ def call_vehicle_operational_data_api(kafka_message):
     encoded_vin = base64.b64encode(payload["vin"].encode("utf-8"))
     payload["vin"] = str(encoded_vin.decode("utf-8"))
 
-    # Call fleet API
+    # Call fleet Operating Data API
     resp = requests.post(FLEET_OPERATING_DATA_ENDPOINT, json=payload)
-    #pprint(FLEET_OPERATING_DATA_ENDPOINT)
-    #pprint(payload)
-    print(resp.content)
+    # pprint(payload)
+    # print(resp.content)
+
 
 def fleet_data_consumer_thread():
     """

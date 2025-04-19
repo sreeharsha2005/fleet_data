@@ -21,7 +21,7 @@ KAFKA_TOPIC_USER_DATA = "user_data"
 KAFKA_CONSUMER_POLL_TIMEOUT = 3 # 3 seconds
 
 #Base directory path
-BASE_DIR = os.path.dirname(os.getcwd())
+BASE_DIR = os.path.dirname(os.path.dirname(os.getcwd()))
 
 #Fleet data storage filenames
 STATIC_DATA_STORE_DIR = "static_data_store"
@@ -30,5 +30,5 @@ DRIVER_PROFILE_FILENAME = BASE_DIR + "/" + STATIC_DATA_STORE_DIR + "/" + "driver
 USER_DATA_FILENAME = BASE_DIR + "/" + STATIC_DATA_STORE_DIR + "/" + "user_data.json"
 
 # DRF API endpoints
-FLEET_DATA_ENDPOINT = "http://localhost:8010/api/v1/vehicles/"
+FLEET_VEHICLE_DATA_ENDPOINT = "http://localhost:8010/api/v1/vehicles/"
 FLEET_OPERATING_DATA_ENDPOINT = "http://localhost:8010/api/v1/vehicles/operatingdata/"
