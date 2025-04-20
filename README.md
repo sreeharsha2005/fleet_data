@@ -1,13 +1,22 @@
 [![Python 3.13](https://img.shields.io/badge/python-3.13-blue.svg)](https://www.python.org/downloads/release/python-3130/)
 
 # FLEET DATA GENERATOR
-<img width="760" alt="Fleet Data Manager" src="https://github.com/user-attachments/assets/1753c8cc-9d41-4226-8212-71b7c07f22bd" />
+
+### **Block diagram**
+
+<img width="786" alt="Screenshot 2025-04-19 at 9 02 52 PM" src="https://github.com/user-attachments/assets/76c7d033-b9bf-4bcc-a9f0-87ba82c17959" />
+
 
 ### Introduction
-This module does the following operations:
-* Create/Reuse vehicle, user, driver_profile data and store to file
-* Publish kafka message for each type of generated data on respective kafka topic
-* Consume kafka message based on topic
+This codebase has the below functionality:
+* Create vehicle, user, driver_profile data for a specified number of instances and store to file
+* Use the stored data to generate fake metrics for vehicle, user and driver_profile 
+* For each generated metric, publish a message on Kafka topic
+* Kafka Consumer to ingest the above metrics and call REST API service
+
+### **Flow diagram**
+
+<img width="842" alt="Screenshot 2025-04-19 at 9 02 15 PM" src="https://github.com/user-attachments/assets/a559b5f3-4c24-49f6-8517-dbd50c6bb6a3" />
 
 
 ### Python virtual environment setup
