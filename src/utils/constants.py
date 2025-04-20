@@ -30,5 +30,5 @@ DRIVER_PROFILE_FILENAME = BASE_DIR + "/" + STATIC_DATA_STORE_DIR + "/" + "driver
 USER_DATA_FILENAME = BASE_DIR + "/" + STATIC_DATA_STORE_DIR + "/" + "user_data.json"
 
 # DRF API endpoints
-FLEET_VEHICLE_DATA_ENDPOINT = "http://localhost:8010/api/v1/vehicles/"
-FLEET_OPERATING_DATA_ENDPOINT = "http://localhost:8010/api/v1/vehicles/operatingdata/"
+FLEET_VEHICLE_DATA_ENDPOINT = "http://localhost:8010/api/v1/vehicle/"
+FLEET_OPERATING_DATA_ENDPOINT = "http://localhost:8010/api/v1/vehicle/operatingdata/"
