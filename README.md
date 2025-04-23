@@ -68,10 +68,39 @@ To view the Kafka UI, open web browser and goto below address:
 http://localhost:8080/overview
 ```
 
-### Consuming Kafka data
+### Consuming Kafka data and running Prometheus metrics data server
 Navigate to `synthetic_data_consumer` directory and run the below command:
 ```
 python3 synthetic_data_consumer.py
+```
+
+### Observability using Prometheus and Grafana
+Use below repo to scrape metrics from Kafka Broker Nodes and Kafka Consumer and
+observe on UI using Prometheus UI Client and Grafana dashboard
+```
+https://github.com/danielqsj/kafka_exporter
+https://github.com/docker/awesome-compose
+
+In kafka-exporter repo:
+docker-compose up -d   # For starting the container
+docker-compose down -v # For stopping the container
+
+To view kafka broker node metrics:
+http://localhost:9308/metrics
+
+
+In awesome-compose:
+cd prometheus-grafana
+docker compose up -d   # Starts both prometheus and grafana containers
+docker compose down -v # Stops both containers
+
+To view metrics on Prometheus UI:
+http://localhost:9090
+
+To view metrics on Grafna UI:
+http://localhost:3000
+admin/grafana
+
 ```
 
 

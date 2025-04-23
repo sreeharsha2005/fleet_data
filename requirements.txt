@@ -1,6 +1,9 @@
 #packages
 faker
 faker_vehicle
+fastapi
+prometheus_client
+
 # librdkafka
 # librdkafka-dev
 quixstreams

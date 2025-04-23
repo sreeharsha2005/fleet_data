@@ -5,15 +5,19 @@ import base64
 from threading import Thread
 import time
 from pprint import pprint
+from prometheus_client import start_http_server, Counter
 
+SLEEP_DURATION_FOREVER_LOOP = 1         # 1 second
 
 from quixstreams import Application
-from utils.constants import (
+from src.utils.constants import (
     KAFKA_TOPIC_VEHICLE_OPERATIONAL_DATA,
     KAFKA_CONSUMER_POLL_TIMEOUT,
     KAFKA_TOPIC_VEHICLE_INVENTORY_DATA,
     KAFKA_TOPIC_DRIVER_PROFILE_DATA,
     KAFKA_TOPIC_USER_DATA,
+    WEBSERVER_PORT_FOR_PROMETHEUS_METRICS,
+    KAFKA_TOPIC_UNKNOWN,
     FLEET_VEHICLE_DATA_ENDPOINT,
     FLEET_OPERATING_DATA_ENDPOINT,
 )
@@ -80,8 +84,10 @@ def fleet_data_consumer_thread():
                 )
 
                 if kafka_msg.topic() == KAFKA_TOPIC_VEHICLE_INVENTORY_DATA:
+                    KAFKA_CONSUMER_COUNTER.labels(KAFKA_TOPIC_VEHICLE_INVENTORY_DATA).inc()
                     call_vehicle_inventory_data_api(kafka_msg)
                 elif kafka_msg.topic() == KAFKA_TOPIC_VEHICLE_OPERATIONAL_DATA:
+                    KAFKA_CONSUMER_COUNTER.labels(KAFKA_TOPIC_VEHICLE_OPERATIONAL_DATA).inc()
                     call_vehicle_operational_data_api(kafka_msg)
                 # elif kafka_msg.topic() == KAFKA_TOPIC_DRIVER_PROFILE_DATA:
                 #     call_driver_profile_data_api(kafka_msg)
@@ -89,6 +95,7 @@ def fleet_data_consumer_thread():
                 #     call_user_data_api(kafka_msg)
 
                 else:
+                    KAFKA_CONSUMER_COUNTER.labels(KAFKA_TOPIC_UNKNOWN).inc()
                     logging.error(
                         "Topic: %s - Message Handler unavailable", kafka_msg.topic()
                     )
@@ -104,6 +111,7 @@ def start_fleet_data_consumer_thread():
 
     return
 
+KAFKA_CONSUMER_COUNTER = Counter('kafka_message_counter', 'Kafka Consumer message count', ['topic'])
 
 def main():
     """
@@ -111,10 +119,10 @@ def main():
     """
     logging.info("START")
     start_fleet_data_consumer_thread()
+    start_http_server(WEBSERVER_PORT_FOR_PROMETHEUS_METRICS)
 
     while True:
-        time.sleep(1)
-
+        time.sleep(SLEEP_DURATION_FOREVER_LOOP)
 
 if __name__ == "__main__":
     logging.basicConfig(level="INFO")

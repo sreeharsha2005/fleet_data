@@ -18,7 +18,8 @@ KAFKA_TOPIC_VEHICLE_INVENTORY_DATA = "vehicle_inventory_data"
 KAFKA_TOPIC_VEHICLE_OPERATIONAL_DATA = "vehicle_oper_data"
 KAFKA_TOPIC_DRIVER_PROFILE_DATA = "driver_profile_data"
 KAFKA_TOPIC_USER_DATA = "user_data"
-KAFKA_CONSUMER_POLL_TIMEOUT = 3 # 3 seconds
+KAFKA_TOPIC_UNKNOWN = "Unknown_kafka_topic"
+KAFKA_CONSUMER_POLL_TIMEOUT = 3         # 3 seconds
 
 #Base directory path
 BASE_DIR = os.path.dirname(os.path.dirname(os.getcwd()))
@@ -32,3 +33,6 @@ USER_DATA_FILENAME = BASE_DIR + "/" + STATIC_DATA_STORE_DIR + "/" + "user_data.j
 # DRF API endpoints
 FLEET_VEHICLE_DATA_ENDPOINT = "http://localhost:8010/api/v1/vehicle/"
 FLEET_OPERATING_DATA_ENDPOINT = "http://localhost:8010/api/v1/vehicle/operatingdata/"
+
+# Web Server Port for scraping Prometheus metrics
+WEBSERVER_PORT_FOR_PROMETHEUS_METRICS = 8100
